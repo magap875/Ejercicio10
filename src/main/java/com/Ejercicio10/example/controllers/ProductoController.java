@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.data.domain.Sort;
 import com.Ejercicio10.example.interfaces.IProductoService;
 import com.Ejercicio10.example.models.Producto;
-
+import jakarta.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -20,7 +20,7 @@ public class ProductoController {
     private final IProductoService productoService;
 
     @PostMapping
-    public ResponseEntity<Producto> guardar(@RequestBody Producto producto) {
+    public ResponseEntity<Producto> guardar(@Valid @RequestBody Producto producto) {
         productoService.guardar(producto);
         return ResponseEntity.status(HttpStatus.CREATED).body(producto);
     }
